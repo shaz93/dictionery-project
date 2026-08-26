@@ -1,5 +1,15 @@
 # Getting Started with Create React App
 
+## Dictionary API key
+
+Create a `.env` file in the project root and add your SheCodes API key:
+
+```
+REACT_APP_DICTIONARY_API_KEY=your_api_key
+```
+
+Restart the development server after changing `.env`. The placeholder key must be replaced with a valid key from SheCodes.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

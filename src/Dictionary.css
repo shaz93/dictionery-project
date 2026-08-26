@@ -1,0 +1,15 @@
+.Dictionary {
+	max-width: 700px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.Dictionary form {
+	display: flex;
+	justify-content: center;
+}
+
+.Dictionary input {
+	width: 100%;
+	max-width: 500px;
+}
