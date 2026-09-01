@@ -3,6 +3,17 @@ import Meaning from "./Meaning";
 
 export default function Results(props) {
   if (props.results) {
+    console.log("API Response:", props.results);
+    
+    if (!props.results.meanings || props.results.meanings.length === 0) {
+      return (
+        <div className="Results">
+          <h2>{props.results.word}</h2>
+          <p>No meanings found</p>
+        </div>
+      );
+    }
+    
     return (
       <div className="Results">
         <h2>{props.results.word}</h2>
