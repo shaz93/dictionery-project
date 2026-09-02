@@ -1,32 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Results from "./Results";
 import "./Dictionary.css";
 
-export default function Dictionary() {
-  let [keyword, setKeyword] = useState("");
-  let [results, setResults] = useState(null);
+export default function Dictionary(props) {
+  const [keyword, setKeyword] = useState(props.defaultKeyword || "sunset");
+  const [results, setResults] = useState(null);
 
-  function handleResponse(response) {
-    setResults(response.data);
+  function searchWord(word) {
+    const apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${word}&key=643960765dfbctb234c6b4f7o500facf`;
+
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        console.log(response.data);
+        setResults(response.data);
+      })
+      .catch((error) => {
+        console.error("Word not found:", error);
+        setResults(null);
+      });
   }
 
-  function search(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-
-    let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=643960765dfbctb234c6b4f7o500facf`;
-    axios.get(apiUrl).then(handleResponse);
+    searchWord(keyword);
   }
 
   function handleKeywordChange(event) {
     setKeyword(event.target.value);
   }
 
+  useEffect(() => {
+    searchWord(keyword);
+  }, []);
+
   return (
     <div className="Dictionary">
-      <form onSubmit={search}>
-        <input type="search" onChange={handleKeywordChange} />
-      </form>
+      <section>
+        <h1>Search for a word</h1>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="search"
+            value={keyword}
+            onChange={handleKeywordChange}
+          />
+          <button type="submit">Search</button>
+        </form>
+
+        <div className="hint">
+          e.g: sunset, box, memory, forest...
+        </div>
+      </section>
+
       <Results results={results} />
     </div>
   );

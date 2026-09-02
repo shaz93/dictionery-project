@@ -1,36 +1,21 @@
 import React from "react";
+import "./Meaning.css";
 import Synonyms from "./Synonyms";
 
 export default function Meaning(props) {
-  if (!props.meaning) {
-    return null;
-  }
-
-  const { partOfSpeech, definition, example, synonyms, antonyms } = props.meaning;
-
   return (
     <div className="Meaning">
-      <h3>{partOfSpeech}</h3>
-      <p className="definition">
-        <strong>Definition:</strong> {definition}
-      </p>
-      {example && (
-        <p className="example">
-          <strong>Example:</strong> <em>"{example}"</em>
-        </p>
-      )}
-      {synonyms && synonyms.length > 0 && (
-        <div>
-          <strong>Synonyms:</strong>
-          <Synonyms synonyms={synonyms} />
-        </div>
-      )}
-      {antonyms && antonyms.length > 0 && (
-        <div>
-          <strong>Antonyms:</strong>
-          <Synonyms synonyms={antonyms} />
-        </div>
-      )}
+      <h3>{props.meaning.partOfSpeech}</h3>
+      {props.meaning.definitions.map(function (definition, index) {
+        return (
+          <div key={index}>
+            <div className="definition">{definition.definition}</div>
+
+            <div className="example">{definition.example}</div>
+            <Synonyms synonyms={definition.synonyms} />
+          </div>
+        );
+      })}
     </div>
   );
 }

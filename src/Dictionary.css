@@ -1,15 +1,143 @@
 .Dictionary {
-	max-width: 700px;
-	margin: 0 auto;
-	padding: 0 20px;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  color: #292343;
+  font-family: Arial, sans-serif;
+}
+
+.Dictionary > section {
+  padding: 35px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ffffff, #f3f0ff);
+  box-shadow: 0 15px 35px rgba(73, 59, 125, 0.15);
+}
+
+.Dictionary h1 {
+  margin: 0 0 22px;
+  font-size: 28px;
+  text-align: center;
 }
 
 .Dictionary form {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  gap: 12px;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 .Dictionary input {
-	width: 100%;
-	max-width: 500px;
+  flex: 1;
+  min-width: 0;
+  padding: 14px 18px;
+  border: 2px solid #e2defa;
+  border-radius: 12px;
+  outline: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.Dictionary input:focus {
+  border-color: #7667e8;
+  box-shadow: 0 0 0 4px rgba(118, 103, 232, 0.15);
+}
+
+.Dictionary button {
+  padding: 14px 24px;
+  border: 0;
+  border-radius: 12px;
+  background: #7667e8;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.Dictionary button:hover {
+  background: #594bd0;
+  transform: translateY(-2px);
+}
+
+.Dictionary .hint {
+  margin-top: 12px;
+  color: #817b9d;
+  font-size: 13px;
+  text-align: center;
+}
+
+.Results {
+  margin-top: 28px;
+  padding: 35px;
+  border: 1px solid #ebe8fa;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 15px 35px rgba(73, 59, 125, 0.12);
+}
+
+.Results h2 {
+  margin: 0;
+  color: #292343;
+  font-size: 48px;
+  text-transform: capitalize;
+}
+
+.Results .phonetic {
+  margin: 8px 0 25px;
+  color: #7667e8;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.Results section {
+  padding: 20px 0;
+  border-top: 1px solid #eeeafd;
+}
+
+.Results h3 {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #eeeafd;
+  color: #6254d8;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.Results .definition {
+  margin: 8px 0;
+  color: #413d5d;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.Results .example {
+  margin: 10px 0;
+  color: #77718f;
+  font-style: italic;
+}
+
+.Results strong {
+  color: #6254d8;
+}
+
+@media (max-width: 600px) {
+  .Dictionary > section,
+  .Results {
+    padding: 24px 18px;
+  }
+
+  .Dictionary form {
+    flex-direction: column;
+  }
+
+  .Dictionary input,
+  .Dictionary button {
+    width: 100%;
+  }
+
+  .Results h2 {
+    font-size: 38px;
+  }
 }

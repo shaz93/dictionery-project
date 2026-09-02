@@ -1,39 +1,37 @@
 import React from "react";
-import Meaning from "./Meaning";
-import Phonetic from "./Phonetic";
 
-export default function Results(props) {
-  if (props.results) {
-    console.log("API Response:", props.results);
-    console.log("Full results object:", JSON.stringify(props.results, null, 2));
-    
-    if (!props.results.meanings || props.results.meanings.length === 0) {
-      return (
-        <div className="Results">
-          <h2>{props.results.word}</h2>
-          <p>No meanings found</p>
-        </div>
-      );
-    }
-    
-    return (
-      <div className="Results">
-        <h2>{props.results.word}</h2>
-        {props.results.phonetic && (
-          <div className="phonetic-section">
-            <p>{props.results.phonetic}</p>
-          </div>
-        )}
-        {props.results.meanings.map(function (meaning, index) {
-          return (
-            <div key={index}>
-              <Meaning meaning={meaning} />
-            </div>
-          );
-        })}
-      </div>
-    );
-  } else {
-    return null;
-  }
+export default function Results({ results }) {
+  if (!results || !results.meanings) return null;
+
+  return (
+    <div className="Results">
+      <h2>{results.word}</h2>
+      <p className="phonetic">{results.phonetic}</p>
+
+      {results.meanings.map((meaning, index) => (
+        <section key={index}>
+          <h3>{meaning.partOfSpeech}</h3>
+          <p className="definition">{meaning.definition}</p>
+
+          {meaning.example && (
+            <p className="example">
+              <strong>Example:</strong> {meaning.example}
+            </p>
+          )}
+
+          {meaning.synonyms?.length > 0 && (
+            <p>
+              <strong>Synonyms:</strong> {meaning.synonyms.join(", ")}
+            </p>
+          )}
+
+          {meaning.antonyms?.length > 0 && (
+            <p>
+              <strong>Antonyms:</strong> {meaning.antonyms.join(", ")}
+            </p>
+          )}
+        </section>
+      ))}
+    </div>
+  );
 }
