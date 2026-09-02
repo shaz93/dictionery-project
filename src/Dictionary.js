@@ -1,24 +1,57 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Results from "./Results";
+import Photos from "./Photos";
 import "./Dictionary.css";
+
+const API_KEY = "643960765dfbctb234c6b4f7o500facf";
 
 export default function Dictionary(props) {
   const [keyword, setKeyword] = useState(props.defaultKeyword || "sunset");
   const [results, setResults] = useState(null);
+  const [photos, setPhotos] = useState(null);
 
   function searchWord(word) {
-    const apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${word}&key=643960765dfbctb234c6b4f7o500facf`;
+    const cleanWord = word.trim();
+
+    if (!cleanWord) return;
+
+    const dictionaryUrl =
+      `https://api.shecodes.io/dictionary/v1/define` +
+      `?word=${encodeURIComponent(cleanWord)}&key=${API_KEY}`;
+
+    const photosUrl =
+      `https://api.shecodes.io/images/v1/search` +
+      `?query=${encodeURIComponent(cleanWord)}&key=${API_KEY}`;
 
     axios
-      .get(apiUrl)
+      .get(dictionaryUrl)
+      .then((response) => setResults(response.data))
+      .catch((error) => {
+        console.error("Dictionary request failed:", error);
+        setResults(null);
+      });
+
+    axios
+      .get(photosUrl)
       .then((response) => {
-        console.log(response.data);
-        setResults(response.data);
+        console.log("Complete photo response:", response.data);
+
+        const imageList =
+          response.data.photos ||
+          response.data.images ||
+          response.data.results ||
+          [];
+
+        setPhotos(Array.isArray(imageList) ? imageList : []);
       })
       .catch((error) => {
-        console.error("Word not found:", error);
-        setResults(null);
+        console.error(
+          "Photos request failed:",
+          error.response?.status,
+          error.response?.data || error.message
+        );
+        setPhotos([]);
       });
   }
 
@@ -49,12 +82,11 @@ export default function Dictionary(props) {
           <button type="submit">Search</button>
         </form>
 
-        <div className="hint">
-          e.g: sunset, box, memory, forest...
-        </div>
+        <div className="hint">e.g: sunset, box, memory, forest...</div>
       </section>
 
       <Results results={results} />
+      <Photos photos={photos} />
     </div>
   );
 }

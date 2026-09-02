@@ -1,0 +1,19 @@
+.Photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.Photos img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+@media (max-width: 600px) {
+  .Photos {
+    grid-template-columns: 1fr;
+  }
+}

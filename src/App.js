@@ -13,14 +13,13 @@ export default function App() {
       </main>
       <footer className="text-center mt-5 mb-3">
         <small>
-          Coded by {"Sheron Ndimande"} and is{" "}
+         👩🏽‍💻 Coded by {"Sheron Ndimande"} and is open sourced on{" "}
           <a
-            href="https://github.com/SheronNdimande/dictionary-project"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
           >
-            open-source
-          </a>
+            Github
+          </a> and hosted on 
+          <a href="#"> Render</a>
         </small>
       </footer>
     </div>
