@@ -13,7 +13,7 @@ export default function App() {
       </main>
       <footer className="text-center mt-5 mb-3">
         <small>
-         👩🏽‍💻 Coded by {"Sheron Ndimande"} and is open sourced on{" "}
+         👩🏽‍💻 Coded by {"Sheron Ndimande"}. Open sourced on{" "}
           <a
             href="https://github.com/shaz93/dictionery-project"
           >
