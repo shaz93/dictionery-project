@@ -82,7 +82,7 @@ export default function Dictionary(props) {
           <button type="submit">Search</button>
         </form>
 
-        <div className="hint">i.g: sunset, box, memory, forest...</div>
+        <div className="hint">i.e: sunset, box, memory, forest...</div>
       </section>
 
       <Results results={results} />
