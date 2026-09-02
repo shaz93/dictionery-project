@@ -19,7 +19,7 @@ export default function App() {
           >
             Github
           </a> and hosted on 
-          <a href="#"> Render</a>
+          <a href="https://dictionery-project.onrender.com"> Render</a>
         </small>
       </footer>
     </div>
