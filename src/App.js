@@ -11,7 +11,7 @@ export default function App() {
       <main>
         <Dictionary />
       </main>
-      <footer className="text-center mt-5 mb-10">
+      <footer className="text-center mt-5 mb-5">
         <small>
          👩🏽‍💻 Coded by {"Sheron Ndimande"}. Open sourced on{" "}
           <a
