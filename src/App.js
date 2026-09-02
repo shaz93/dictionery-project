@@ -15,7 +15,7 @@ export default function App() {
         <small>
          👩🏽‍💻 Coded by {"Sheron Ndimande"} and is open sourced on{" "}
           <a
-            href="#"
+            href="https://github.com/shaz93/dictionery-project"
           >
             Github
           </a> and hosted on 
